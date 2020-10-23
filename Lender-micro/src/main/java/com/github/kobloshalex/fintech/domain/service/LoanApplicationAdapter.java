@@ -18,8 +18,8 @@ public class LoanApplicationAdapter {
     this.userRepository = userRepository;
   }
 
-  public LoanApplication transform(LoanRequest request) {
-    Optional<User> user = userRepository.findById(request.getBorrowerId());
+  public LoanApplication transform(LoanRequest request, User borrower) {
+    Optional<User> user = userRepository.findById(borrower.getUsername());
 
     if (user.isPresent()) {
       return new LoanApplication(
@@ -28,7 +28,7 @@ public class LoanApplicationAdapter {
           request.getDaysToRepair(),
           request.getInterestRate());
     } else {
-      throw new UserNotFoundException(request.getBorrowerId());
+      throw new UserNotFoundException(borrower.getUsername());
     }
   }
 }

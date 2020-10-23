@@ -4,23 +4,17 @@ import java.util.Objects;
 
 public class LoanRequest {
   private final int amount;
-  private final long borrowerId;
   private final int daysToRepair;
   private final double interestRate;
 
-  public LoanRequest(int amount, int borrowerId, int daysToRepair, double interestRate) {
+  public LoanRequest(int amount, int daysToRepair, double interestRate) {
     this.amount = amount;
-    this.borrowerId = borrowerId;
     this.daysToRepair = daysToRepair;
     this.interestRate = interestRate;
   }
 
   public int getAmount() {
     return amount;
-  }
-
-  public long getBorrowerId() {
-    return borrowerId;
   }
 
   public int getDaysToRepair() {
@@ -36,8 +30,6 @@ public class LoanRequest {
     return "LoanRequest{"
         + "amount="
         + amount
-        + ", borrowerId="
-        + borrowerId
         + ", daysToRepair="
         + daysToRepair
         + ", interestRate="
@@ -55,13 +47,12 @@ public class LoanRequest {
     }
     LoanRequest that = (LoanRequest) o;
     return amount == that.amount
-        && borrowerId == that.borrowerId
         && daysToRepair == that.daysToRepair
         && Double.compare(that.interestRate, interestRate) == 0;
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(amount, borrowerId, daysToRepair, interestRate);
+    return Objects.hash(amount, daysToRepair, interestRate);
   }
 }

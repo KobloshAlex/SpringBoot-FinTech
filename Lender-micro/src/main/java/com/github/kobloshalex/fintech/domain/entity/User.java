@@ -10,7 +10,7 @@ import java.util.Objects;
 public final class User {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private  long id;
+  private  String username;
 
   private String firstName;
   private String lastName;
@@ -19,8 +19,8 @@ public final class User {
 
   public User() {}
 
-  public User(long id, String firstName, String lastName, int age, String occupation) {
-    this.id = id;
+  public User(String username, String firstName, String lastName, int age, String occupation) {
+    this.username = username;
     this.firstName = firstName;
     this.lastName = lastName;
     this.age = age;
@@ -43,8 +43,8 @@ public final class User {
     return occupation;
   }
 
-  public long getId() {
-    return id;
+  public String getUsername() {
+    return username;
   }
 
   @Override
