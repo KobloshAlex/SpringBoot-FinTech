@@ -5,7 +5,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import java.time.Duration;
 import java.util.Objects;
 
 @Entity
@@ -15,14 +14,13 @@ public final class LoanEntity {
   private long id;
 
   private int amount;
-  private Duration repaymentTerms;
+  private int repaymentTerms;
   private double interest;
   @ManyToOne private User borrower;
 
   public LoanEntity() {}
 
-  public LoanEntity(long id, int amount, User borrower, Duration repaymentTerms, double interest) {
-    this.id = id;
+  public LoanEntity(int amount, User borrower, int repaymentTerms, double interest) {
     this.amount = amount;
     this.borrower = borrower;
     this.repaymentTerms = repaymentTerms;
@@ -37,7 +35,7 @@ public final class LoanEntity {
     return borrower;
   }
 
-  public Duration getRepaymentTerms() {
+  public int getRepaymentTerms() {
     return repaymentTerms;
   }
 

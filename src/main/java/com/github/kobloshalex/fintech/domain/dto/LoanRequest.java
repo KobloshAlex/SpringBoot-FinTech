@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class LoanRequest {
   private final int amount;
-  private final int borrowerId;
+  private final long borrowerId;
   private final int daysToRepair;
   private final double interestRate;
 
@@ -19,7 +19,7 @@ public class LoanRequest {
     return amount;
   }
 
-  public int getBorrowerId() {
+  public long getBorrowerId() {
     return borrowerId;
   }
 
