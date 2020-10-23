@@ -1,37 +1,48 @@
 package com.github.kobloshalex.fintech.domain.dto;
 
-import com.github.kobloshalex.fintech.domain.entity.User;
-
-import java.time.Duration;
 import java.util.Objects;
 
 public class LoanRequest {
   private final int amount;
-  private final User borrower;
-  private final Duration repaymentTerms;
-  private final double interest;
+  private final int borrowerId;
+  private final int daysToRepair;
+  private final double interestRate;
 
-  public LoanRequest(int amount, User borrower, Duration repaymentTerms, double interest) {
+  public LoanRequest(int amount, int borrowerId, int daysToRepair, double interestRate) {
     this.amount = amount;
-    this.borrower = borrower;
-    this.repaymentTerms = repaymentTerms;
-    this.interest = interest;
+    this.borrowerId = borrowerId;
+    this.daysToRepair = daysToRepair;
+    this.interestRate = interestRate;
   }
 
   public int getAmount() {
     return amount;
   }
 
-  public User getBorrower() {
-    return borrower;
+  public int getBorrowerId() {
+    return borrowerId;
   }
 
-  public Duration getRepaymentTerms() {
-    return repaymentTerms;
+  public int getDaysToRepair() {
+    return daysToRepair;
   }
 
-  public double getInterest() {
-    return interest;
+  public double getInterestRate() {
+    return interestRate;
+  }
+
+  @Override
+  public String toString() {
+    return "LoanRequest{"
+        + "amount="
+        + amount
+        + ", borrowerId="
+        + borrowerId
+        + ", daysToRepair="
+        + daysToRepair
+        + ", interestRate="
+        + interestRate
+        + '}';
   }
 
   @Override
@@ -44,27 +55,13 @@ public class LoanRequest {
     }
     LoanRequest that = (LoanRequest) o;
     return amount == that.amount
-        && Double.compare(that.interest, interest) == 0
-        && Objects.equals(borrower, that.borrower)
-        && Objects.equals(repaymentTerms, that.repaymentTerms);
+        && borrowerId == that.borrowerId
+        && daysToRepair == that.daysToRepair
+        && Double.compare(that.interestRate, interestRate) == 0;
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(amount, borrower, repaymentTerms, interest);
-  }
-
-  @Override
-  public String toString() {
-    return "LoanRequest{"
-        + "amount="
-        + amount
-        + ", borrower="
-        + borrower
-        + ", repaymentTerms="
-        + repaymentTerms
-        + ", interest="
-        + interest
-        + '}';
+    return Objects.hash(amount, borrowerId, daysToRepair, interestRate);
   }
 }

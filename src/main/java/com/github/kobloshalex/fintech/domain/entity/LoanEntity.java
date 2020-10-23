@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import java.time.Duration;
 import java.util.Objects;
 
@@ -11,12 +12,14 @@ import java.util.Objects;
 public final class LoanEntity {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private final long id;
+  private long id;
 
-  private final int amount;
-  private final User borrower;
-  private final Duration repaymentTerms;
-  private final double interest;
+  private int amount;
+  private Duration repaymentTerms;
+  private double interest;
+  @ManyToOne private User borrower;
+
+  public LoanEntity() {}
 
   public LoanEntity(long id, int amount, User borrower, Duration repaymentTerms, double interest) {
     this.id = id;

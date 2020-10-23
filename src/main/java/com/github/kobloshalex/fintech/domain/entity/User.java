@@ -10,12 +10,14 @@ import java.util.Objects;
 public final class User {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private final long id;
+  private  long id;
 
-  private final String firstName;
-  private final String lastName;
-  private final int age;
-  private final String occupation;
+  private String firstName;
+  private String lastName;
+  private int age;
+  private String occupation;
+
+  public User() {}
 
   public User(long id, String firstName, String lastName, int age, String occupation) {
     this.id = id;
@@ -39,6 +41,10 @@ public final class User {
 
   public String getOccupation() {
     return occupation;
+  }
+
+  public long getId() {
+    return id;
   }
 
   @Override
