@@ -8,7 +8,7 @@ import javax.persistence.ManyToOne;
 import java.util.Objects;
 
 @Entity
-public final class LoanEntity {
+public final class LoanApplication {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private long id;
@@ -18,9 +18,9 @@ public final class LoanEntity {
   private double interest;
   @ManyToOne private User borrower;
 
-  public LoanEntity() {}
+  public LoanApplication() {}
 
-  public LoanEntity(int amount, User borrower, int repaymentTerms, double interest) {
+  public LoanApplication(int amount, User borrower, int repaymentTerms, double interest) {
     this.amount = amount;
     this.borrower = borrower;
     this.repaymentTerms = repaymentTerms;
@@ -48,10 +48,10 @@ public final class LoanEntity {
     if (this == o) {
       return true;
     }
-    if (!(o instanceof LoanEntity)) {
+    if (!(o instanceof LoanApplication)) {
       return false;
     }
-    LoanEntity that = (LoanEntity) o;
+    LoanApplication that = (LoanApplication) o;
     return amount == that.amount
         && Double.compare(that.interest, interest) == 0
         && Objects.equals(borrower, that.borrower)
@@ -75,5 +75,14 @@ public final class LoanEntity {
         + ", interest="
         + interest
         + '}';
+  }
+
+  public long getId() {
+    return id;
+  }
+
+  public LoanApplication setId(long id) {
+    this.id = id;
+    return this;
   }
 }
