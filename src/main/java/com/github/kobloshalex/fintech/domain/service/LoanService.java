@@ -10,6 +10,8 @@ import com.github.kobloshalex.fintech.domain.repository.LoanRepository;
 import com.github.kobloshalex.fintech.domain.repository.UserRepository;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 public class LoanService {
 
@@ -33,5 +35,9 @@ public class LoanService {
             .findById(loanApplicationId)
             .orElseThrow(() -> new LoanApplicationNotFoundException(loanApplicationId));
     loanRepository.save(new Loan(lender, loanApplication));
+  }
+
+  public final List<Loan> getLoans(){
+    return loanRepository.findAll();
   }
 }

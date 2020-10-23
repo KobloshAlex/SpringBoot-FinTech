@@ -1,6 +1,7 @@
 package com.github.kobloshalex.fintech.application.controller;
 
 import com.github.kobloshalex.fintech.domain.dto.LoanRequest;
+import com.github.kobloshalex.fintech.domain.entity.Loan;
 import com.github.kobloshalex.fintech.domain.entity.LoanApplication;
 import com.github.kobloshalex.fintech.domain.entity.User;
 import com.github.kobloshalex.fintech.domain.repository.LoanApplicationRepository;
@@ -44,8 +45,8 @@ public class LoanController {
     return userRepository.findAll();
   }
 
-  @GetMapping(value = "/loans")
-  public List<LoanApplication> getAllLoans() {
+  @GetMapping(value = "/loans-app")
+  public List<LoanApplication> getAllLoansApplications() {
     return loanApplicationRepository.findAll();
   }
 
@@ -53,5 +54,10 @@ public class LoanController {
   public void acceptLoan(
       @PathVariable final String lenderId, @PathVariable final String loanApplicationId) {
     loanService.acceptLoan(Long.parseLong(loanApplicationId), Long.parseLong(lenderId));
+  }
+
+  @GetMapping(value = "/loans")
+  public List<Loan> getAllLoans() {
+    return loanService.getLoans();
   }
 }
