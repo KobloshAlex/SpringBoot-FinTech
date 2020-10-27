@@ -43,7 +43,8 @@ public class LoanController {
 
   @PostMapping(value = "/loan/request")
   public void requestLoan(@RequestBody final LoanRequest loanRequest, HttpServletRequest request) {
-    User borrower = tokenValidationService.validateTokenAndGetUsername(
+    User borrower =
+        tokenValidationService.validateTokenAndGetUsername(
             request.getHeader(HttpHeaders.AUTHORIZATION));
     loanApplicationRepository.save(loanApplicationAdapter.transform(loanRequest, borrower));
   }
@@ -63,12 +64,11 @@ public class LoanController {
   }
 
   @PostMapping(value = "/loan/accept/{loanApplicationId}")
-  public void acceptLoan(
-      @PathVariable final String loanApplicationId,
-      HttpServletRequest request) {
-    User user = tokenValidationService.validateTokenAndGetUsername(
+  public void acceptLoan(@PathVariable final String loanApplicationId, HttpServletRequest request) {
+    User user =
+        tokenValidationService.validateTokenAndGetUsername(
             request.getHeader(HttpHeaders.AUTHORIZATION));
-    loanService.acceptLoan(Long.parseLong(loanApplicationId),user.getUsername());
+    loanService.acceptLoan(Long.parseLong(loanApplicationId), user.getUsername());
   }
 
   @GetMapping(value = "/loans")

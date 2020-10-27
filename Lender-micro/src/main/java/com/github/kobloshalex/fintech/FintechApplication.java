@@ -24,8 +24,6 @@ public class FintechApplication {
   public CommandLineRunner sampleData(UserRepository userRepository) {
     return args -> {
       userRepository.save(new User("Alex", "Alex", "Kob", 21, "Medd st"));
-      userRepository.save(new User("Bob", "Rob", "Rob", 31, "Winn st"));
-      userRepository.save(new User("Jack", "Jack", "Green", 51, "Arrow st"));
     };
   }
 }

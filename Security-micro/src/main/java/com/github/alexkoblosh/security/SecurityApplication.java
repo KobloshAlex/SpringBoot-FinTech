@@ -18,8 +18,6 @@ public class SecurityApplication {
   public CommandLineRunner fillUsers(UserRepository userRepository) {
     return args -> {
       userRepository.save(new User("Alex", "123"));
-      userRepository.save(new User("Bob", "123"));
-      userRepository.save(new User("Kim", "123"));
     };
   }
 }

@@ -3,7 +3,6 @@ package com.github.kobloshalex.fintech.domain.service;
 import com.github.kobloshalex.fintech.domain.entity.User;
 import com.github.kobloshalex.fintech.domain.exception.UserNotFoundException;
 import com.github.kobloshalex.fintech.domain.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -16,17 +15,12 @@ import java.util.Objects;
 
 @Component
 public class TokenValidationService {
+  private static final String securityContextBaseUrl = "http://localhost:8082";
   private final UserRepository userRepository;
-  private final RestTemplate restTemplate;
-  private final String securityContextBaseUrl;
+  private final RestTemplate restTemplate = new RestTemplate();
 
-  public TokenValidationService(
-      UserRepository userRepository,
-      RestTemplate restTemplate,
-      @Value("${security.baseurl}") String securityContextBaseUrl) {
+  public TokenValidationService(UserRepository userRepository) {
     this.userRepository = userRepository;
-    this.restTemplate = restTemplate;
-    this.securityContextBaseUrl = securityContextBaseUrl;
   }
 
   public User validateTokenAndGetUsername(final String token) {
@@ -36,11 +30,11 @@ public class TokenValidationService {
 
     ResponseEntity<String> response =
         restTemplate.exchange(
-            securityContextBaseUrl + "/users/validate", HttpMethod.POST, httpEntity, String.class);
+            "http://localhost:8082/users/validate", HttpMethod.POST, httpEntity, String.class);
 
     if (response.getStatusCode().equals(HttpStatus.OK)) {
       return userRepository
-          .findById(Objects.requireNonNull(response.getBody()))
+          .findById(response.getBody())
           .orElseThrow(() -> new UserNotFoundException(response.getBody()));
     }
     throw new RuntimeException("Invalid token");
