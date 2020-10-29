@@ -1,17 +1,20 @@
 package com.github.kobloshalex.fintech.domain.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.ToString;
+
 import java.util.Objects;
 
+@AllArgsConstructor
+@Getter
+@ToString
+@EqualsAndHashCode
 public class LoanRequest {
   private final int amount;
   private final int daysToRepair;
   private final double interestRate;
-
-  public LoanRequest(int amount, int daysToRepair, double interestRate) {
-    this.amount = amount;
-    this.daysToRepair = daysToRepair;
-    this.interestRate = interestRate;
-  }
 
   public int getAmount() {
     return amount;
