@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/SpringBoot-FinTech.iml" filepath="$PROJECT_DIR$/.idea/SpringBoot-FinTech.iml" />
       <module fileurl="file://$PROJECT_DIR$/Lender-micro/fintech.iml" filepath="$PROJECT_DIR$/Lender-micro/fintech.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Profile-micro/profile.iml" filepath="$PROJECT_DIR$/Profile-micro/profile.iml" />
       <module fileurl="file://$PROJECT_DIR$/Security-micro/security.iml" filepath="$PROJECT_DIR$/Security-micro/security.iml" />
     </modules>
   </component>

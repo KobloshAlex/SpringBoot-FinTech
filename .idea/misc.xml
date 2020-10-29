@@ -8,6 +8,7 @@
       <list>
         <option value="$PROJECT_DIR$/Lender-micro/pom.xml" />
         <option value="$PROJECT_DIR$/Security-micro/pom.xml" />
+        <option value="$PROJECT_DIR$/Profile-micro/pom.xml" />
       </list>
     </option>
   </component>

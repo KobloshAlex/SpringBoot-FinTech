@@ -9,16 +9,19 @@
         <outputRelativeToContentRoot value="true" />
         <module name="security" />
         <module name="fintech" />
+        <module name="profile" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="fintech" target="11" />
+      <module name="profile" target="11" />
       <module name="security" target="11" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="fintech" options="-parameters" />
+      <module name="profile" options="-parameters" />
       <module name="security" options="-parameters" />
     </option>
   </component>
