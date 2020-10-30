@@ -2,6 +2,7 @@ package com.github.kobloshalex.fintech;
 
 import com.github.kobloshalex.fintech.domain.entity.User;
 import com.github.kobloshalex.fintech.domain.repository.UserRepository;
+import com.google.gson.Gson;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -18,6 +19,11 @@ public class FintechApplication {
   @Bean
   public RestTemplate restTemplate() {
     return new RestTemplate();
+  }
+
+  @Bean
+  public Gson gson() {
+    return new Gson();
   }
 
   @Bean
