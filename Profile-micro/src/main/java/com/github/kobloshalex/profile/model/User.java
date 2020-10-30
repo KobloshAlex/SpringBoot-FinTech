@@ -8,6 +8,8 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.time.LocalDate;
 
@@ -20,7 +22,9 @@ import java.time.LocalDate;
 @EqualsAndHashCode
 public class User {
 
-  @Id private String username;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private String username;
   private String firstName;
   private String lastName;
   private int age;

@@ -1,5 +1,6 @@
 package com.github.alexkoblosh.security.controller;
 
+import com.github.alexkoblosh.security.dto.UserDto;
 import com.github.alexkoblosh.security.exception.UserNotFoundException;
 import com.github.alexkoblosh.security.repository.UserRepository;
 import com.github.alexkoblosh.security.service.NotificationService;
@@ -22,10 +23,10 @@ public class UserController {
   }
 
   @PostMapping("/register")
-  public void register(User user) {
-    //user.setUsername("test");
+  public void register(UserDto userDto) {
+    User user = new User(userDto.getUsername(), userDto.getPassword());
     userRepository.save(user);
-    notificationService.sendMessage(user);
+    notificationService.sendMessage(userDto);
   }
 
   @PostMapping("/validate")
