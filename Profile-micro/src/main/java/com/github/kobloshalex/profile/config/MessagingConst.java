@@ -1,4 +1,4 @@
-package com.github.kobloshalex.fintech.domain.config;
+package com.github.kobloshalex.profile.config;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -7,7 +7,7 @@ import lombok.Getter;
 @Getter
 public enum MessagingConst {
   TOPIC("userRegisteredTopic"),
-  QUEUE_NAME("user.registered.lender"),
+  QUEUE_NAME("user.registered.profile"),
   ROUTING_KEY("user.#");
 
   private final String message;
