@@ -1,5 +1,6 @@
 package com.github.kobloshalex.fintech;
 
+import com.github.kobloshalex.fintech.domain.entity.Balance;
 import com.github.kobloshalex.fintech.domain.entity.User;
 import com.github.kobloshalex.fintech.domain.repository.UserRepository;
 import com.google.gson.Gson;
@@ -29,7 +30,7 @@ public class FintechApplication {
   @Bean
   public CommandLineRunner sampleData(UserRepository userRepository) {
     return args -> {
-      userRepository.save(new User("Alex", "Alex", "Kob", 21, "Medd st"));
+      userRepository.save(new User("Alex", "Alex", "Kob", 21, "Medd st", new Balance()));
     };
   }
 }

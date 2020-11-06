@@ -11,8 +11,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.Objects;
-
 @Component
 public class TokenValidationService {
   private static final String securityContextBaseUrl = "http://localhost:8082";

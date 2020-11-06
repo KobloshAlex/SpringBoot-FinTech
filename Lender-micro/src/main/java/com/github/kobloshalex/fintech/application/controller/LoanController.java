@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
@@ -49,11 +50,16 @@ public class LoanController {
     loanApplicationRepository.save(loanApplicationAdapter.transform(loanRequest, borrower));
   }
 
-  @GetMapping(value = "/users")
-  public List<User> getAllUsers(HttpServletRequest request) {
-    tokenValidationService.validateTokenAndGetUsername(
-        request.getHeader(HttpHeaders.AUTHORIZATION));
-    return userRepository.findAll();
+  @GetMapping(value = "loan/borrower")
+  public List<Loan> findAllBorrowerLoans(@RequestHeader final String authToken) {
+    final User borrower = tokenValidationService.validateTokenAndGetUsername(authToken);
+    return loanService.findAllBorrowers(borrower);
+  }
+
+  @GetMapping(value = "loan/lent")
+  public List<Loan> findAllLentLoans(@RequestHeader final String authToken) {
+    final User lent = tokenValidationService.validateTokenAndGetUsername(authToken);
+    return loanService.findAllLenders(lent);
   }
 
   @GetMapping(value = "/loans-app")
